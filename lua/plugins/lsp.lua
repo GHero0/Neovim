@@ -43,22 +43,11 @@ return {
         handlers = {
           -- default handler, apply to every language server without
           -- a custom handler
-          function(server_name)
-            lsp_config[server_name].setup({})
+          function(lua_ls)
+            lsp_config[lua_ls].setup({})
           end,
 
-          -- Lua
-          lua_ls = function()
-            lsp_config.lua_ls.setup({
-              settings = {
-                Lua = {
-                  diagnostics = {
-                    globals = { "vim" }
-                  }
-                }
-              }
-            })
-          end,
+            
         }
       })
       vim.api.nvim_create_autocmd("LspAttach", {
